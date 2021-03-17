@@ -4,7 +4,7 @@
 // RA: 16104325
 //
 // Rafaela Medina
-// RA: 
+// RA: 20014346
 // 
 //**********************************
 
@@ -188,34 +188,47 @@ Disciplina cadastrarDisciplina(int contadorDisciplinas) {
 Disciplina matricularAluno(int indexAluno, int indexDisciplina, Aluno vetorAlunos[], Disciplina vetorDisciplinas[]) {
 	Aluno alunoDummy;
 	Disciplina disciplinaDummy;
-	int index;
+	int jaTemAluno;
 
 	alunoDummy = vetorAlunos[indexAluno];
 	disciplinaDummy = vetorDisciplinas[indexDisciplina];
 
-	disciplinaDummy.ponteiroAlunosMatriculados++;
-	if (disciplinaDummy.ponteiroAlunosMatriculados > QUANTIDADE_MAX_ALUNOS_MATRICULADOS-1) {
-		printf("[ERRO] Sala cheia! A sala já possuí %d Alunos. Favor, criar outra sala para a disciplina.\n", QUANTIDADE_MAX_ALUNOS_MATRICULADOS);
+	jaTemAluno = retornaIndexAlunoNaDisciplina(alunoDummy, disciplinaDummy);
+
+	if (jaTemAluno == -1) {
+		disciplinaDummy.ponteiroAlunosMatriculados++;
+		if (disciplinaDummy.ponteiroAlunosMatriculados > QUANTIDADE_MAX_ALUNOS_MATRICULADOS - 1) {
+			printf("| [ERRO] Sala cheia! A sala já possuí %d Alunos. Favor, criar outra sala para a disciplina.\n", QUANTIDADE_MAX_ALUNOS_MATRICULADOS);
+		}
+		else {
+			disciplinaDummy.alunosMatriculados[disciplinaDummy.ponteiroAlunosMatriculados] = alunoDummy;
+		}
 	}
 	else {
-		disciplinaDummy.alunosMatriculados[disciplinaDummy.ponteiroAlunosMatriculados] = alunoDummy;
-	}	
+		printf("| [ERRO] O Aluno Já está Matriculado nesta Disciplina! Favor, escolha outra Disciplina.\n");
+	}
 	return disciplinaDummy;
 }
 Disciplina matricularProfessor(int indexProfessor, int indexDisciplina, Professor vetorProfessores[], Disciplina vetorDisciplinas[]) {
 	Professor professorDummy;
 	Disciplina disciplinaDummy;
-	int index;
+	int jaTemProfessor;
 
 	professorDummy = vetorProfessores[indexProfessor];
 	disciplinaDummy = vetorDisciplinas[indexDisciplina];
 
-	disciplinaDummy.ponteiroProfessoresMatriculados++;
-	if (disciplinaDummy.ponteiroProfessoresMatriculados > QUANTIDADE_MAX_PROFESSORES_MATRICULADOS-1) {
-		printf("[ERRO] Sala cheia! %d professores já estão ministrando. Favor, criar outra sala para a disciplina.\n", QUANTIDADE_MAX_PROFESSORES_MATRICULADOS);
-	}
-	else {
-		disciplinaDummy.professoresMatriculados[disciplinaDummy.ponteiroProfessoresMatriculados] = professorDummy;
+	jaTemProfessor = retornaIndexProfessorNaDisciplina(professorDummy, disciplinaDummy);
+
+	if (jaTemProfessor == -1) {
+		disciplinaDummy.ponteiroProfessoresMatriculados++;
+		if (disciplinaDummy.ponteiroProfessoresMatriculados > QUANTIDADE_MAX_PROFESSORES_MATRICULADOS - 1) {
+			printf("[ERRO] Sala cheia! %d professores já estão ministrando. Favor, criar outra sala para a disciplina.\n", QUANTIDADE_MAX_PROFESSORES_MATRICULADOS);
+		}
+		else {
+			disciplinaDummy.professoresMatriculados[disciplinaDummy.ponteiroProfessoresMatriculados] = professorDummy;
+		}
+	}else {
+		printf("| [ERRO] O Professor Já está Matriculado nesta Disciplina! Favor, escolha outra Disciplina.\n");
 	}
 	return disciplinaDummy;
 }
@@ -453,7 +466,7 @@ void printSubMenuImpressoes() {
 	printf("|                                          |\n");
 	printf("| | 2 | - Listar Professores               |\n");
 	printf("|                                          |\n");
-	printf("| | 3 | - Listar Disciplinas(s)            |\n");
+	printf("| | 3 | - Listar Disciplinas               |\n");
 	printf("|                                          |\n");
 	printf("| | 4 | - Listar Disciplinas do Aluno      |\n");
 	printf("|                                          |\n");

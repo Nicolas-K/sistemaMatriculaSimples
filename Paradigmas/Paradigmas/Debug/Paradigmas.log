@@ -1,5 +1,3 @@
 ﻿  Paradigmas.c
-C:\Users\nicku\Desktop\ProjetoParadigmas\Paradigmas\Paradigmas\Paradigmas.c(181,6): warning C4101: 'index': variável local não referenciada
-C:\Users\nicku\Desktop\ProjetoParadigmas\Paradigmas\Paradigmas\Paradigmas.c(198,6): warning C4101: 'index': variável local não referenciada
-C:\Users\nicku\Desktop\ProjetoParadigmas\Paradigmas\Paradigmas\Paradigmas.c(815,87): warning C4133: 'função': tipos incompatíveis - de 'Professor [250]' para 'Aluno *'
+C:\Users\nicku\Desktop\ProjetoParadigmas\Paradigmas\Paradigmas\Paradigmas.c(838,87): warning C4133: 'função': tipos incompatíveis - de 'Professor [250]' para 'Aluno *'
   Paradigmas.vcxproj -> C:\Users\nicku\Desktop\ProjetoParadigmas\Paradigmas\Debug\Paradigmas.exe
